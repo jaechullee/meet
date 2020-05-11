@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="project">
+  	<select id="list" resultType="Project">
+  	SELECT * FROM project
+  	ORDER BY project_id ASC
+  	</select>
+  	
+  	<update id="update">
+  		UPDATE project
+  		SET project_name=#{project_name}
+  		WHERE project_id=#{project_id}
+  	</update>
+  	
+  	<insert id="add">
+  		INSERT INTO project (project_id,project_name,user_id)
+  		VALUES(seq_project.nextval,#{project_name},#{user_id})
+  	</insert>
+  	
+  	<delete id="delete">
+  		DELETE FROM project
+  		WHERE project_id=#{project_id}
+  	</delete>
+  	
+  	<select id="item" resultType="Project">
+  		SELECT * FROM project
+  		WHERE project_id=#{project_id}
+  	</select>
+  	
+  	<select id="read" resultType="Project">
+  		SELECT * FROM project
+  		WHERE project_id=#{project_id}
+  	</select>
+  	
+  </mapper>
